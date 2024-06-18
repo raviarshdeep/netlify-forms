@@ -12,7 +12,6 @@ const Form = () => {
   const formik = useFormik({
     initialValues: {
       name: "",
-      phone: "",
       email: "",
       message: "",
     },
@@ -47,7 +46,7 @@ const Form = () => {
       })
         .then(() => alert("Form successfully submitted"))
         .catch((error) => alert(error));
-        resetForm();
+      resetForm();
     },
   });
   console.log(formik.errors);
@@ -71,7 +70,6 @@ const Form = () => {
               name="name"
               value={formik.values.name}
               onChange={formik.handleChange}
-              onBlur={(e) => formik.handleBlur(e)}
             />
           </label>
         </p>
@@ -83,7 +81,6 @@ const Form = () => {
               name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
-              onBlur={(e) => formik.handleBlur(e)}
             />
           </label>
         </p>
@@ -94,7 +91,6 @@ const Form = () => {
               name="message"
               value={formik.values.message}
               onChange={formik.handleChange}
-              onBlur={(e) => formik.handleBlur(e)}
             ></textarea>
           </label>
         </p>
