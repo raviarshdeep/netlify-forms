@@ -56,12 +56,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact"
+        name="contactForm"
         method="POST"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="contact" />
-
+        <input type="hidden" name="form-name" value="contactForm" />
         <p>
           <label>
             Your Name:{" "}
@@ -94,9 +94,8 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
+
+        <button type="submit">Send</button>
       </form>
     </div>
   );
