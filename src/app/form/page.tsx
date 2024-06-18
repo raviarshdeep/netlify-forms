@@ -19,7 +19,7 @@ const Form = () => {
           <textarea name="comments" id="comments"></textarea>
         </p>
         <p>
-          <button type="submit" />
+          <input type="submit" />
         </p>
       </form>
     </div>
