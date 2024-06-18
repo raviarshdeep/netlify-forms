@@ -20,7 +20,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <div>
           <div className="layout-flex">
-            <Link href="/">Home</Link> <Link href="/about">About</Link>
+            <Link href="/">Home</Link>
+            <Link href="/about">About</Link>
             <Link href="/form">Form</Link>
           </div>
         </div>
