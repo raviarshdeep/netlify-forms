@@ -1,34 +1,101 @@
+"use client";
 import React from "react";
+import { useFormik } from "formik";
+
+interface FormValues {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      phone: "",
+      email: "",
+      message: "",
+    },
+    validate: (values) => {
+      const errors: Partial<FormValues> = {};
+
+      if (!values.name.trim()) {
+        errors.name = "Name is required";
+      } else if (!/^[a-zA-Z]+$/.test(values.name.trim())) {
+        errors.name = "Name must contain only alphabets";
+      }
+
+      if (!values.email.trim()) {
+        errors.email = "Email is required";
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email.trim())
+      ) {
+        errors.email = "Invalid email address";
+      }
+
+      if (!values.message.trim()) {
+        errors.message = "Message is required";
+      }
+
+      return errors;
+    },
+    onSubmit: (values, { resetForm }) => {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(values).toString(),
+      })
+        .then(() => alert("Form successfully submitted"))
+        .catch((error) => alert(error));
+        resetForm();
+    },
+  });
+  console.log(formik.errors);
+  console.log(formik.values);
   return (
     <div>
       <h2>Contact Form</h2>
-      <form name="contact" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="contact"/>
+      <form
+        onSubmit={formik.handleSubmit}
+        name="contact"
+        method="POST"
+        data-netlify="true"
+      >
+        <input type="hidden" name="form-name" value="contact" />
 
         <p>
           <label>
-            Your Name: <input type="text" name="name" />
+            Your Name:{" "}
+            <input
+              type="text"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={(e) => formik.handleBlur(e)}
+            />
           </label>
         </p>
         <p>
           <label>
-            Your Email: <input type="email" name="email" />
+            Your Email:{" "}
+            <input
+              type="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={(e) => formik.handleBlur(e)}
+            />
           </label>
         </p>
         <p>
           <label>
-            Your Role:{" "}
-            <select name="role[]" multiple>
-              <option value="leader">Leader</option>
-              <option value="follower">Follower</option>
-            </select>
-          </label>
-        </p>
-        <p>
-          <label>
-            Message: <textarea name="message"></textarea>
+            Message:{" "}
+            <textarea
+              name="message"
+              value={formik.values.message}
+              onChange={formik.handleChange}
+              onBlur={(e) => formik.handleBlur(e)}
+            ></textarea>
           </label>
         </p>
         <p>
