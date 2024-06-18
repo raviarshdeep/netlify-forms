@@ -40,8 +40,8 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__forms.html", {
-          method: "post",
+        const response = await fetch("/", {
+          method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(values).toString(),
         });
@@ -65,11 +65,11 @@ const Form = () => {
       <form
         onSubmit={formik.handleSubmit}
         name="contact_us"
-        // method="POST"
-        // data-netlify="true"
-        // data-netlify-honeypot="bot-field"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
       >
-        {/* <input type="hidden" name="form-name" value="contact_us" /> */}
+        <input type="hidden" name="contact_us" value="contact_us" />
         <p>
           <label>
             Your Name:{" "}
