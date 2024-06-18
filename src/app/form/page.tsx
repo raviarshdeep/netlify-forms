@@ -64,12 +64,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="Contact_Us_Form"
+        name="contact_us"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="Contact_Us_Form" />
+        <input type="hidden" name="form-name" value="contact_us" />
         <p>
           <label>
             Your Name:{" "}
