@@ -38,14 +38,22 @@ const Form = () => {
 
       return errors;
     },
-    onSubmit: (values, { resetForm }) => {
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(values).toString(),
-      })
-        .then(() => alert("Form successfully submitted"))
-        .catch((error) => alert(error));
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams(values).toString(),
+        });
+        if (response.ok) {
+          alert("Form successfully submitted");
+          resetForm();
+        } else {
+          throw new Error("Form submission failed!");
+        }
+      } catch (error: any) {
+        alert(error.message);
+      }
       resetForm();
     },
   });
@@ -56,12 +64,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contactForm"
+        name="contact"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="contactForm" />
+        <input type="hidden" name="Contact_Form" value="contact" />
         <p>
           <label>
             Your Name:{" "}
@@ -72,6 +80,7 @@ const Form = () => {
               onChange={formik.handleChange}
             />
           </label>
+          {formik.errors.name && <div>{formik.errors.name}</div>}
         </p>
         <p>
           <label>
