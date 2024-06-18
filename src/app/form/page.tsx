@@ -45,6 +45,7 @@ const Form = () => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(values).toString(),
         });
+        console.log("response",response)
         if (response.ok) {
           alert("Form successfully submitted");
           resetForm();
@@ -57,19 +58,18 @@ const Form = () => {
       resetForm();
     },
   });
-  console.log(formik.errors);
-  console.log(formik.values);
+
   return (
     <div>
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact"
+        name="Contact_Us_Form"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="Contact_Us_Form" />
         <p>
           <label>
             Your Name:{" "}
@@ -103,8 +103,7 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
-
-        <button type="submit">Send </button>
+        <button type="submit">Send</button>
       </form>
     </div>
   );
