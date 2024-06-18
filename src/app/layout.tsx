@@ -21,7 +21,7 @@ export default function RootLayout({
         <div>
           <div className="layout-flex">
             <Link href="/">Home</Link> <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/form">Form</Link>
           </div>
         </div>
         {children}
