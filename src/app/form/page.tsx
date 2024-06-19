@@ -69,14 +69,14 @@ const Form = () => {
         name="contactAS"
         method="post"
         data-netlify="true"
-        data-netlify-honeypot="bot-field"
+        // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
         <input type="hidden" name="form-name" value="contactAS" />
-        <label htmlFor="bot-field">
+        {/* <label hidden htmlFor="bot-field">
           Don&apos;t fill this out if you&apos;re human:
           <input name="bot-field" />
-        </label>
+        </label> */}
         <p>
           <label>
             Your Name:{" "}
