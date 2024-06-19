@@ -11,6 +11,8 @@ interface FormValues {
 const Form = () => {
   const formik = useFormik({
     initialValues: {
+      bot_field: "",
+      form_name: "contact",
       name: "",
       email: "",
       message: "",
@@ -64,12 +66,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact_us"
+        name="contact AS"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="contact_us" value="contact_us" />
+        <input type="hidden" name="form-name " value="contact AS" />
         <p>
           <label>
             Your Name:{" "}
