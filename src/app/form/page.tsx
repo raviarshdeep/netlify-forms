@@ -72,7 +72,7 @@ const Form = () => {
         netlify-honeypot="bot-field"
         data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="form-name" value={"contactAS"} />
+        <input type="hidden" name="contactAS" value={"contactAS"} />
 
         <p>
           <label>
