@@ -64,6 +64,7 @@ const Form = () => {
   return (
     <div>
       <h2>Contact Form</h2>
+      <input type="hidden" name="contactAS" value="contactAS" />
       <form
         onSubmit={formik.handleSubmit}
         name="contactAS"
@@ -72,8 +73,6 @@ const Form = () => {
         netlify-honeypot="bot-field"
         data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="contactAS" value={"contactAS"} />
-
         <p>
           <label>
             Your Name:{" "}
