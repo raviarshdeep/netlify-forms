@@ -54,26 +54,26 @@ const ContactForm = () => {
         //   data-netlify-honeypot="bot-field"
           method="POST"
         //   noValidate
-        //   action={`/`}
+          action={`/success`}
         >
-          <input type="hidden" name="application" value="application" />
+          <input type="hidden" name="form-name" value="application" />
           {/* <input type="hidden" name="bot-field" onChange={handleChange} /> */}
 
           <div>
-            <label htmlFor="name">Name: </label>
-            <input type="text" name="name" id="Name" />
+            <label htmlFor="name1">Name: </label>
+            <input type="text" name="name1" id="Name1" />
             {/*<ErrorMessage name="name"/>*/}
           </div>
 
           <div>
-            <label htmlFor="email">Email: </label>
-            <input type="email" name="email" id="email" />
+            <label htmlFor="email1">Email: </label>
+            <input type="email" name="email1" id="email1" />
             {/*<ErrorMessage name="email"/>*/}
           </div>
 
           <div>
-            <label htmlFor="number">Email: </label>
-            <input type="text" name="number" />
+            <label htmlFor="number1">Number: </label>
+            <input type="text" name="number1" />
           </div>
 
           <button className={"btn btn-primary"} type="submit">
