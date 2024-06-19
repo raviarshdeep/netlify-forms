@@ -72,8 +72,8 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label htmlFor="message">Message: </label>
-            <input type="textarea" name="message" id="message" />
+            <label htmlFor="number">Email: </label>
+            <input type="text" name="number" />
           </div>
 
           <button className={"btn btn-primary"} type="submit">
