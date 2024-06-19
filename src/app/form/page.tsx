@@ -6,6 +6,7 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
+  form_name:string;
 }
 
 const Form = () => {
@@ -14,6 +15,7 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
+      form_name:"contactAS"
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
@@ -45,7 +47,7 @@ const Form = () => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(values).toString(),
         });
-        console.log("response",response)
+        console.log("response", response);
         if (response.ok) {
           alert("Form successfully submitted");
           resetForm();
@@ -67,8 +69,11 @@ const Form = () => {
         name="contactAS"
         method="post"
         data-netlify="true"
+        netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="form-name" value="contactAS" />
+        <input type="hidden" name="form-name" value={"contactAS"} />
+
         <p>
           <label>
             Your Name:{" "}
@@ -102,6 +107,7 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
+        <div data-netlify-recaptcha="true"></div>
         <input type="submit" />
       </form>
     </div>
