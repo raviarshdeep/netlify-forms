@@ -6,7 +6,7 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
-  form_name:string;
+  form_name: string;
 }
 
 const Form = () => {
@@ -15,7 +15,7 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
-      form_name:"contactAS"
+      form_name: "contactAS",
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
@@ -42,7 +42,7 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__index.html", {
+        const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(values).toString(),
@@ -64,15 +64,19 @@ const Form = () => {
   return (
     <div>
       <h2>Contact Form</h2>
-      <input type="hidden" name="contactAS" value="contactAS" />
       <form
         onSubmit={formik.handleSubmit}
         name="contactAS"
         method="post"
         data-netlify="true"
-        netlify-honeypot="bot-field"
-        data-netlify-recaptcha="true"
+        // netlify-honeypot="bot-field"
+        // data-netlify-recaptcha="true"
       >
+        <input type="hidden" name="form-name" value="contactAS" />
+        {/* <label htmlFor="bot-field">
+          Don&apos;t fill this out if you&apos;re human:
+          <input name="bot-field" />
+        </label> */}
         <p>
           <label>
             Your Name:{" "}
