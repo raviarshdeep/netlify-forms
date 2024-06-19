@@ -20,6 +20,7 @@ const ContactForm = () => {
       onSubmit={(values, actions) => {
         fetch("/", {
           method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: new URLSearchParams(values).toString(),
         })
           .then(() => {
@@ -47,16 +48,16 @@ const ContactForm = () => {
     >
       {({ handleChange }) => (
         <form
-          name="job-application"
+          name="application"
           data-netlify="true"
           // enctype="multipart/form-data"
-          data-netlify-honeypot="bot-field"
+        //   data-netlify-honeypot="bot-field"
           method="POST"
-          noValidate
+        //   noValidate
         //   action={`/`}
         >
-          <input type="hidden" name="job-application" value="job-application" />
-          <input type="hidden" name="bot-field" onChange={handleChange} />
+          <input type="hidden" name="application" value="application" />
+          {/* <input type="hidden" name="bot-field" onChange={handleChange} /> */}
 
           <div>
             <label htmlFor="name">Name: </label>
