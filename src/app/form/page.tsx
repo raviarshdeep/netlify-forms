@@ -6,7 +6,6 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
-  form_name: string;
 }
 
 const Form = () => {
@@ -15,7 +14,6 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
-      form_name: "contactAS",
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
@@ -68,7 +66,6 @@ const Form = () => {
         onSubmit={formik.handleSubmit}
         name="contactAS"
         method="post"
-        data-netlify="true"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
