@@ -5,7 +5,7 @@ import { Formik } from "formik";
 interface FormValues {
   name: string;
   email: string;
-  message: string;
+  phone: string;
 }
 
 const ContactForm = () => {
@@ -15,7 +15,6 @@ const ContactForm = () => {
         name: "",
         email: "",
         phone: "",
-        message: "",
       }}
       onSubmit={(values, actions) => {
         fetch("/", {
@@ -40,8 +39,8 @@ const ContactForm = () => {
         if (!values.email || !emailRegex.test(values.email)) {
           errors.email = "Valid Email Required";
         }
-        if (!values.message) {
-          errors.message = "Message Required";
+        if (!values.phone) {
+          errors.phone = "phone Required";
         }
         return errors;
       }}
@@ -51,9 +50,9 @@ const ContactForm = () => {
           name="application"
           // data-netlify="true"
           // enctype="multipart/form-data"
-        //   data-netlify-honeypot="bot-field"
+          //   data-netlify-honeypot="bot-field"
           method="POST"
-        //   noValidate
+          //   noValidate
           action={`/success`}
         >
           <input type="hidden" name="form-name" value="application" />
@@ -62,20 +61,15 @@ const ContactForm = () => {
           <div>
             <label htmlFor="name1">Name: </label>
             <input type="text" name="name1" id="Name1" />
-            {/*<ErrorMessage name="name"/>*/}
           </div>
-
           <div>
             <label htmlFor="email1">Email: </label>
             <input type="email" name="email1" id="email1" />
-            {/*<ErrorMessage name="email"/>*/}
           </div>
-
           <div>
-            <label htmlFor="number1">Number: </label>
+            <label htmlFor="number1">Phone: </label>
             <input type="number" name="number1" />
           </div>
-
           <button className={"btn btn-primary"} type="submit">
             Send
           </button>
