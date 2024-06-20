@@ -49,7 +49,7 @@ const ContactForm = () => {
       {({ handleChange }) => (
         <form
           name="application"
-          data-netlify="true"
+          // data-netlify="true"
           // enctype="multipart/form-data"
         //   data-netlify-honeypot="bot-field"
           method="POST"
@@ -73,7 +73,7 @@ const ContactForm = () => {
 
           <div>
             <label htmlFor="number1">Number: </label>
-            <input type="text" name="number1" />
+            <input type="number" name="number1" />
           </div>
 
           <button className={"btn btn-primary"} type="submit">
