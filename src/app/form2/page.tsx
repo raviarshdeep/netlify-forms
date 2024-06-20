@@ -6,6 +6,7 @@ interface FormValues {
   name: string;
   email: string;
   phone: string;
+  "form-name": string;
 }
 
 const ContactForm = () => {
@@ -15,6 +16,7 @@ const ContactForm = () => {
         name: "",
         email: "",
         phone: "",
+        "form-name": "applications",
       }}
       onSubmit={(values, actions) => {
         fetch("/", {
@@ -24,11 +26,11 @@ const ContactForm = () => {
         })
           .then(() => {
             alert("Success");
-            actions.resetForm();
           })
           .catch(() => {
             alert("Error");
           });
+        actions.resetForm();
       }}
       validate={(values) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -47,32 +49,29 @@ const ContactForm = () => {
     >
       {({ handleChange }) => (
         <form
-          name="application"
+          name="applications"
           // data-netlify="true"
-          // enctype="multipart/form-data"
           //   data-netlify-honeypot="bot-field"
           method="POST"
           //   noValidate
           action={`/success`}
         >
-          <input type="hidden" name="form-name" value="application" />
+          <input type="hidden" name="form-name" value="applications" />
           {/* <input type="hidden" name="bot-field" onChange={handleChange} /> */}
 
           <div>
-            <label htmlFor="name1">Name: </label>
-            <input type="text" name="name1" id="Name1" />
+            <label htmlFor="nameA">Name: </label>
+            <input type="text" name="nameA" id="nameA" />
           </div>
           <div>
-            <label htmlFor="email1">Email: </label>
-            <input type="email" name="email1" id="email1" />
+            <label htmlFor="emailA">Email: </label>
+            <input type="email" name="emailA" id="emailA" />
           </div>
           <div>
-            <label htmlFor="number1">Phone: </label>
-            <input type="number" name="number1" />
+            <label htmlFor="numberA">Phone: </label>
+            <input type="number" name="numberA" />
           </div>
-          <button className={"btn btn-primary"} type="submit">
-            Send
-          </button>
+          <button type="submit">Send</button>
         </form>
       )}
     </Formik>

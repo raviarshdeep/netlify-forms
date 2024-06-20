@@ -6,7 +6,6 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
-  "form-name": string;
 }
 
 const Form = () => {
@@ -15,7 +14,6 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
-      "form-name": "contact_form",
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
@@ -45,9 +43,9 @@ const Form = () => {
         const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams(values).toString(),
+          // body: new URLSearchParams(values).toString(),
+          body: encode({ "form-name": "contact-form", ...values }),
         });
-        console.log("response", response);
         if (response.ok) {
           alert("Form successfully submitted");
           resetForm();
@@ -60,18 +58,24 @@ const Form = () => {
       resetForm();
     },
   });
-
+  const encode = (data : any) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&");
+  };
   return (
     <div>
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact_form"
+        name="contact-form"
         method="post"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="form-name" value="contact_form" />
+        <input type="hidden" name="form-name" value="contact-form" />
         {/* <label hidden htmlFor="bot-field">
           Don&apos;t fill this out if you&apos;re human:
           <input name="bot-field" />
@@ -109,8 +113,8 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
-        <div data-netlify-recaptcha="true"></div>
-        <input type="submit" />
+        {/* <input type="submit" /> */}
+        <button type="submit">Send</button>
       </form>
     </div>
   );
