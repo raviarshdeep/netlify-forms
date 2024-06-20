@@ -1,6 +1,22 @@
+"use client"
 export default function ContactForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+  };
+
   return (
-    <form name="contact" action="/success" method="POST" data-netlify="true">
+    <form name="contact" action="/success" method="POST" data-netlify="true" onSubmit={() => handleSubmit(e)}>
       <input type="hidden" name="form-name" value="contact" />
       <p>
         <input type="text" name="firstname" id="firstname" />
