@@ -66,12 +66,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contactAS"
+        name="contact_form"
         method="post"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="form-name" value="contactAS" />
+        <input type="hidden" name="form-name" value="contact_form" />
         {/* <label hidden htmlFor="bot-field">
           Don&apos;t fill this out if you&apos;re human:
           <input name="bot-field" />
