@@ -6,6 +6,7 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
+  "form-name": string;
 }
 
 const Form = () => {
@@ -14,6 +15,7 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
+      "form-name": "contactAS",
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
