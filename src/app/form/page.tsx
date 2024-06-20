@@ -15,7 +15,7 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
-      "form-name": "contactAS",
+      "form-name": "contact_form",
     },
     validate: (values) => {
       const errors: Partial<FormValues> = {};
