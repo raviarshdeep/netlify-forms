@@ -123,7 +123,7 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
-        <input type="submit" />
+        <button type="submit">Send</button>
       </form>
     </div>
   );
