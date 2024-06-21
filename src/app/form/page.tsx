@@ -40,7 +40,7 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/hiddenform.html", {
+        const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encode({
