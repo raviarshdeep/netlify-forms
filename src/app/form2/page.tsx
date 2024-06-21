@@ -41,9 +41,9 @@ const MyForm: React.FC = () => {
       className="text-black flex flex-col gap-3 align-center"
     >
       <input type="hidden" name="form-name" value="feedback" />
-      <input name="name1" type="text" placeholder="Name"  value="ankit"/>
-      <input name="email1" type="text" placeholder="Email (optional)" value="ankit@gmail.com"/>
-      <input name="message1" type="text" placeholder="Message"  value="how are you"/>
+      <input name="name1" type="text" placeholder="Name" />
+      <input name="email1" type="text" placeholder="Email (optional)"/>
+      <input name="message1" type="text" placeholder="Message" />
       <button type="submit">Submit</button>
     </form>
   );

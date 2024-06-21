@@ -46,6 +46,7 @@ const Form = () => {
           body: encode({
             "form-name": "contact",
             name: "ravi",
+            email: "ravi@yopmail.com",
             message: "Hor are you",
           }),
         });
