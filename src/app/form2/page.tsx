@@ -22,7 +22,7 @@ const MyForm: React.FC = () => {
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: "email1=test@example.com&name1=pw",
       });
       if (res.status === 200) {
         alert("submit");
