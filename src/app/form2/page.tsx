@@ -2,17 +2,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
-
-const initialValues: FormValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-};
 
 const MyForm: React.FC = () => {
   const encode = (data: any) => {
@@ -53,9 +42,9 @@ const MyForm: React.FC = () => {
       className="text-black flex flex-col gap-3 align-center"
     >
       <input type="hidden" name="form-name" value="feedback" />
-      <input name="name" type="text" placeholder="Name" required />
-      <input name="email" type="text" placeholder="Email (optional)" />
-      <input name="message" type="text" placeholder="Message" required />
+      <input name="name1" type="text" placeholder="Name" required />
+      <input name="email1" type="text" placeholder="Email (optional)" />
+      <input name="message1" type="text" placeholder="Message" required />
       <button type="submit">Submit</button>
     </form>
   );
