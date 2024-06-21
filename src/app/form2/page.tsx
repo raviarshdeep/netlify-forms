@@ -1,6 +1,6 @@
 "use client";
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 interface FormValues {
   firstName: string;
@@ -9,9 +9,9 @@ interface FormValues {
 }
 
 const initialValues: FormValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
+  firstName: "",
+  lastName: "",
+  email: "",
 };
 
 const MyForm: React.FC = () => {
@@ -22,41 +22,42 @@ const MyForm: React.FC = () => {
       )
       .join("&");
   };
-  const handleFormSubmit = async (event:any) => {
+  const handleFormSubmit = async (event: any) => {
     event.preventDefault();
     try {
-
-        const myForm = event.target;
-        const formData = new FormData(myForm);
-        const res = await fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-           body: encode({ "form-name": "feedback", ...formData }),
-        });
-        if (res.status === 200) {
-            alert("submit")
-        } else {
-            alert("error in form")
-        }
+      const myForm = event.target;
+      const formData = new FormData(myForm);
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "feedback",
+          name: "ravi",
+          message: "Hor are you",
+        }),
+      });
+      if (res.status === 200) {
+        alert("submit");
+      } else {
+        alert("error in form");
+      }
     } catch (e) {
-      alert("error")
+      alert("error");
     }
-};
+  };
 
   return (
     <form
-    name="feedback"
-    onSubmit={handleFormSubmit}
-    className="text-black flex flex-col gap-3 align-center"
->
-    <input type="hidden" name="form-name" value="feedback" />
-    <input name="name" type="text" placeholder="Name" required />
-    <input name="email" type="text" placeholder="Email (optional)" />
-    <input name="message" type="text" placeholder="Message" required />
-    <button type="submit">
-        Submit
-    </button>
-</form>
+      name="feedback"
+      onSubmit={handleFormSubmit}
+      className="text-black flex flex-col gap-3 align-center"
+    >
+      <input type="hidden" name="form-name" value="feedback" />
+      <input name="name" type="text" placeholder="Name" required />
+      <input name="email" type="text" placeholder="Email (optional)" />
+      <input name="message" type="text" placeholder="Message" required />
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
