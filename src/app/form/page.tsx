@@ -58,7 +58,7 @@ const Form = () => {
       resetForm();
     },
   });
-  const encode = (data : any) => {
+  const encode = (data: any) => {
     return Object.keys(data)
       .map(
         (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
@@ -70,12 +70,12 @@ const Form = () => {
       <h2>Contact Form</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact-form3"
+        name="contact"
         method="post"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
-        <input type="hidden" name="form-name" value="contact-form3" />
+        <input type="hidden" name="form-name" value="contact" />
         {/* <label hidden htmlFor="bot-field">
           Don&apos;t fill this out if you&apos;re human:
           <input name="bot-field" />
@@ -86,11 +86,8 @@ const Form = () => {
             <input
               type="text"
               name="name"
-              value={formik.values.name}
-              onChange={formik.handleChange}
             />
           </label>
-          {formik.errors.name && <div>{formik.errors.name}</div>}
         </p>
         <p>
           <label>
@@ -101,6 +98,15 @@ const Form = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
             />
+          </label>
+        </p>
+        <p>
+          <label>
+            Your Role:{" "}
+            <select name="role[]" multiple>
+              <option value="leader">Leader</option>
+              <option value="follower">Follower</option>
+            </select>
           </label>
         </p>
         <p>
