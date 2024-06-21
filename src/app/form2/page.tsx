@@ -14,7 +14,7 @@ const Form = () => {
       name: "",
       email: "",
       message: "",
-    }
+    },
     onSubmit: async (values, { resetForm }) => {
       try {
         const response = await fetch("/__forms.html", {
