@@ -17,7 +17,7 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__forms2.html", {
+        const response = await fetch("/__forms.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encode({ "form-name": "feedback", ...values }),
@@ -46,7 +46,7 @@ const Form = () => {
       <h2>Contact Form 2</h2>
       <form
         onSubmit={formik.handleSubmit}
-        name="contact"
+        name="feedback"
       >
         <input type="hidden" name="form-name" value="feedback" />
         {/* <label hidden htmlFor="bot-field">
