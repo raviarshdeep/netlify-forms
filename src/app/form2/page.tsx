@@ -3,17 +3,17 @@ import React from "react";
 import { useFormik } from "formik";
 
 interface FormValues {
-  name: string;
-  email: string;
-  message: string;
+  name1: string;
+  email1: string;
+  message1: string;
 }
 
 const Form = () => {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
-      message: "",
+      name1: "",
+      email1: "",
+      message1: "",
     },
     onSubmit: async (values, { resetForm }) => {
       try {
@@ -59,7 +59,7 @@ const Form = () => {
             <input
               type="text"
               name="name1"
-              value={formik.values.name}
+              value={formik.values.name1}
               onChange={formik.handleChange}
             />
           </label>
@@ -70,7 +70,7 @@ const Form = () => {
             <input
               type="email"
               name="email1"
-              value={formik.values.email}
+              value={formik.values.email1}
               onChange={formik.handleChange}
             />
           </label>
@@ -81,7 +81,7 @@ const Form = () => {
             Message:{" "}
             <textarea
               name="message1"
-              value={formik.values.message}
+              value={formik.values.message1}
               onChange={formik.handleChange}
             ></textarea>
           </label>
