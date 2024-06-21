@@ -86,6 +86,8 @@ const Form = () => {
             <input
               type="text"
               name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
             />
           </label>
         </p>
@@ -119,7 +121,7 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
-        {/* <input type="submit" /> */}
+        <input type="submit" />
         <button type="submit">Send</button>
       </form>
     </div>
