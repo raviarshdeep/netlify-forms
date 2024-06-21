@@ -19,7 +19,7 @@ const MyForm: React.FC = () => {
       const formData = new FormData(myForm);
       console.log("formData",formData)
       // const formData ={}
-      const res = await fetch("/__forms.html", {
+      const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: "form-name=feedback&email1=test@example.com&name1=pw",

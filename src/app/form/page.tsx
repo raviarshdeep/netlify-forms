@@ -75,6 +75,7 @@ const Form = () => {
       <form
         onSubmit={formik.handleSubmit}
         name="contact"
+        method="POST"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >
