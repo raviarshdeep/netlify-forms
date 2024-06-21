@@ -20,11 +20,6 @@ const MyForm: React.FC = () => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
-        // body: encode({
-        //   "form-name": "feedback",
-        //   name1: "ravi",
-        //   message1: "Hor are you",
-        // }),
       });
       if (res.status === 200) {
         alert("submit");
@@ -43,9 +38,9 @@ const MyForm: React.FC = () => {
       className="text-black flex flex-col gap-3 align-center"
     >
       <input type="hidden" name="form-name" value="feedback" />
-      <input name="name1" type="text" placeholder="Name" required />
-      <input name="email1" type="text" placeholder="Email (optional)" />
-      <input name="message1" type="text" placeholder="Message" required />
+      <input name="name1" type="text" placeholder="Name"  value="ankit"/>
+      <input name="email1" type="text" placeholder="Email (optional)" value="ankit@gmail.com"/>
+      <input name="message1" type="text" placeholder="Message"  value="how are you"/>
       <button type="submit">Submit</button>
     </form>
   );
