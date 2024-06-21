@@ -45,7 +45,7 @@ const Form = () => {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           // body: encode({ "form-name": "contact", ...values }),
           body: encode({
-            "form-name": "feedback",
+            "form-name": "contact",
             name: "ravi",
             message: "Hor are you",
           }),
