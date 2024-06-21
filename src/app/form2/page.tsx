@@ -4,7 +4,6 @@ const ContactForm = () => {
   return (
     <form name="contact2" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact2"/>
-
       <p>
         <label>
           Your Name: <input type="text" name="nameA" value="ravi"/>
