@@ -19,12 +19,12 @@ const MyForm: React.FC = () => {
       const res = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-         body: encode({ "form-name": "feedback", ...formData }),
-        // body: encode({
-        //   "form-name": "feedback",
-        //   name: "ravi",
-        //   message: "Hor are you",
-        // }),
+        //  body: encode({ "form-name": "feedback", ...formData }),
+        body: encode({
+          "form-name": "feedback",
+          name: "ravi",
+          message: "Hor are you",
+        }),
       });
       if (res.status === 200) {
         alert("submit");
