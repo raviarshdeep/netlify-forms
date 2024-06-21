@@ -17,7 +17,7 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__forms.html", {
+        const response = await fetch("/__forms2.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encode({ "form-name": "feedback", ...values }),
