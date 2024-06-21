@@ -43,8 +43,8 @@ const Form = () => {
         const response = await fetch("/__forms.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          // body: encode({ "form-name": "contact", ...values }),
-          body: new URLSearchParams(values).toString(),
+          body: encode({ "form-name": "contact", ...values }),
+          // body: new URLSearchParams(values).toString(),
         });
         if (response.ok) {
           alert("Form successfully submitted");
