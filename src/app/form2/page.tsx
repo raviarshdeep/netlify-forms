@@ -2,7 +2,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-
 const MyForm: React.FC = () => {
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
@@ -12,7 +11,7 @@ const MyForm: React.FC = () => {
       const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: "form-name=feedback&email1=test@example.com&name1=pw",
       });
       if (res.status === 200) {
         alert("submit");
@@ -25,13 +24,10 @@ const MyForm: React.FC = () => {
   };
 
   return (
-    <form
-      name="feedback"
-      onSubmit={handleFormSubmit}
-    >
+    <form name="feedback" onSubmit={handleFormSubmit}>
       <input type="hidden" name="form-name" value="feedback" />
       <input name="name1" type="text" placeholder="Name" />
-      <input name="email1" type="text" placeholder="Email (optional)"/>
+      <input name="email1" type="text" placeholder="Email (optional)" />
       <input name="message1" type="text" placeholder="Message" />
       <button type="submit">Submit</button>
     </form>
