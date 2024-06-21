@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 interface FormValues {
   name: string;
   email: string;
+  number:string;
   message: string;
 }
 
@@ -13,6 +14,7 @@ const Form = () => {
     initialValues: {
       name: "",
       email: "",
+      number:"",
       message: "",
     },
     validate: (values) => {
@@ -40,11 +42,10 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__forms.html", {
+        const response = await fetch("/", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: encode({ "form-name": "contact", ...values }),
-          // body: new URLSearchParams(values).toString(),
         });
         if (response.ok) {
           alert("Form successfully submitted");
@@ -100,15 +101,17 @@ const Form = () => {
               onChange={formik.handleChange}
             />
           </label>
-        </p>
-        <p>
+          <p>
           <label>
-            Your Role:{" "}
-            <select name="role[]" multiple>
-              <option value="leader">Leader</option>
-              <option value="follower">Follower</option>
-            </select>
+            Your Number:{" "}
+            <input
+              type="text"
+              name="number"
+              value={formik.values.number}
+              onChange={formik.handleChange}
+            />
           </label>
+        </p>
         </p>
         <p>
           <label>

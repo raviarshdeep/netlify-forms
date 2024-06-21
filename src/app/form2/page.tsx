@@ -15,9 +15,7 @@ const MyForm: React.FC = () => {
     event.preventDefault();
     try {
       const myForm = event.target;
-      console.log("event.target",event.target)
       const formData = new FormData(myForm);
-      console.log("formData",formData)
       const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
