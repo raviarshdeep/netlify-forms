@@ -88,7 +88,7 @@ const Form = () => {
             Your Name:{" "}
             <input
               type="text"
-              name="name"
+              name="name1"
               value={formik.values.name}
               onChange={formik.handleChange}
             />
@@ -99,7 +99,7 @@ const Form = () => {
             Your Email:{" "}
             <input
               type="email"
-              name="email"
+              name="email1"
               value={formik.values.email}
               onChange={formik.handleChange}
             />
@@ -118,7 +118,7 @@ const Form = () => {
           <label>
             Message:{" "}
             <textarea
-              name="message"
+              name="message1"
               value={formik.values.message}
               onChange={formik.handleChange}
             ></textarea>
