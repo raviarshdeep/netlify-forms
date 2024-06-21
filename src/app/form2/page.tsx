@@ -4,13 +4,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 
 const MyForm: React.FC = () => {
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
   const handleFormSubmit = async (event: any) => {
     event.preventDefault();
     try {
