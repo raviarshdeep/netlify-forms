@@ -40,10 +40,9 @@ const Form = () => {
     },
     onSubmit: async (values, { resetForm }) => {
       try {
-        const response = await fetch("/__forms.html", {
+        const response = await fetch("/hiddenform.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          // body: encode({ "form-name": "contact", ...values }),
           body: encode({
             "form-name": "contact",
             name: "ravi",
@@ -75,7 +74,6 @@ const Form = () => {
       <form
         onSubmit={formik.handleSubmit}
         name="contact"
-        method="POST"
         // data-netlify-honeypot="bot-field"
         // data-netlify-recaptcha="true"
       >

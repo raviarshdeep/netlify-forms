@@ -19,10 +19,10 @@ const MyForm: React.FC = () => {
       const formData = new FormData(myForm);
       console.log("formData",formData)
       // const formData ={}
-      const res = await fetch("/", {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "form-name=feedback&email1=test@example.com&name1=pw",
+        body: new URLSearchParams(formData as any).toString(),
       });
       if (res.status === 200) {
         alert("submit");
