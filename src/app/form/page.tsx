@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -11,6 +11,8 @@ interface FormValues {
 }
 
 const Form = () => {
+  const recaptcha = useRef<ReCAPTCHA>(null);
+  const [recaptchaValue, setRecaptchaValue] = useState<string>("");
   const sitekey: string = process.env.RECAPTCHA_SITE_KEY || " ";
   console.log(sitekey);
   const formik = useFormik({
@@ -48,7 +50,11 @@ const Form = () => {
         const response = await fetch("/__forms.html", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "contact", ...values }),
+          body: encode({
+            "form-name": "contact",
+            ...values,
+            "g-recaptcha-response": recaptchaValue,
+          }),
         });
         if (response.ok) {
           alert("Form successfully submitted");
@@ -60,6 +66,7 @@ const Form = () => {
         alert(error.message);
       }
       resetForm();
+      recaptcha?.current?.reset();
     },
   });
   const encode = (data: any) => {
@@ -69,14 +76,11 @@ const Form = () => {
       )
       .join("&");
   };
-  const handleCaptcha = () => {
-    console.log("Capatcha hit");
+  const onCaptchaChange = (token: string | null) => {
+    if (token) {
+      setRecaptchaValue(token);
+    }
   };
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
   return (
     <div>
       <h2>Contact Form</h2>
@@ -126,7 +130,12 @@ const Form = () => {
           </label>
         </p>
         <div className="relative">
-          <ReCAPTCHA sitekey={sitekey} onChange={handleCaptcha} />
+          <ReCAPTCHA
+            size="normal"
+            sitekey={sitekey}
+            onChange={onCaptchaChange}
+            ref={recaptcha}
+          />
         </div>
         <button type="submit">Send</button>
       </form>

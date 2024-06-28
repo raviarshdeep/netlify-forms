@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { ReCaptchaProvider } from "next-recaptcha-v3";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
             <Link href="/form2">Form2</Link>
           </div>
         </div>
+        <ReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_SITE_KEY || " "}>
         {children}
+        </ReCaptchaProvider>
       </body>
     </html>
   );
