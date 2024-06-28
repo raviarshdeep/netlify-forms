@@ -1,20 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface FormValues {
   name: string;
   email: string;
-  number:string;
+  number: string;
   message: string;
 }
 
 const Form = () => {
+  const sitekey: string = process.env.RECAPTCHA_SITE_KEY || " ";
+  console.log(sitekey);
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
-      number:"",
+      number: "",
       message: "",
     },
     validate: (values) => {
@@ -66,20 +69,19 @@ const Form = () => {
       )
       .join("&");
   };
+  const handleCaptcha = () => {
+    console.log("Capatcha hit");
+  };
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
     <div>
       <h2>Contact Form</h2>
-      <form
-        onSubmit={formik.handleSubmit}
-        name="contact"
-        // data-netlify-honeypot="bot-field"
-        // data-netlify-recaptcha="true"
-      >
+      <form onSubmit={formik.handleSubmit} name="contact">
         <input type="hidden" name="form-name" value="contact" />
-        {/* <label hidden htmlFor="bot-field">
-          Don&apos;t fill this out if you&apos;re human:
-          <input name="bot-field" />
-        </label> */}
         <p>
           <label>
             Your Name:{" "}
@@ -102,16 +104,16 @@ const Form = () => {
             />
           </label>
           <p>
-          <label>
-            Your Number:{" "}
-            <input
-              type="text"
-              name="number"
-              value={formik.values.number}
-              onChange={formik.handleChange}
-            />
-          </label>
-        </p>
+            <label>
+              Your Number:{" "}
+              <input
+                type="text"
+                name="number"
+                value={formik.values.number}
+                onChange={formik.handleChange}
+              />
+            </label>
+          </p>
         </p>
         <p>
           <label>
@@ -123,6 +125,9 @@ const Form = () => {
             ></textarea>
           </label>
         </p>
+        <div className="relative">
+          <ReCAPTCHA sitekey={sitekey} onChange={handleCaptcha} />
+        </div>
         <button type="submit">Send</button>
       </form>
     </div>
