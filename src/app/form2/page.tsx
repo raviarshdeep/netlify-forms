@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { useFormik } from "formik";
-import ReCAPTCHA from "react-google-recaptcha";
+import Reaptcha from 'reaptcha';
 
 interface FormValues {
   name1: string;
@@ -10,7 +10,7 @@ interface FormValues {
 }
 
 const Form = () => {
-  const recaptcha = useRef<ReCAPTCHA>(null);
+  const recaptcha = useRef<Reaptcha>(null);
   const [recaptchaValue, setRecaptchaValue] = useState<string>("");
   const sitekey: string = process.env.RECAPTCHA_SITE_KEY || " ";
   const formik = useFormik({
@@ -96,12 +96,11 @@ const Form = () => {
           </label>
         </p>
         <div className="relative">
-          <ReCAPTCHA
-            size="normal"
+          
+          <Reaptcha  size="normal"
             sitekey={sitekey}
-            onChange={onCaptchaChange}
-            ref={recaptcha}
-          />
+            onVerify={onCaptchaChange}
+            ref={recaptcha} />
         </div>
         <button type="submit">Send</button>
       </form>
