@@ -8,7 +8,7 @@ const handleSubmit = (event: any) => {
   const myForm = event.target;
   const formData = new FormData(myForm);
 
-  fetch("/", {
+  fetch("/__forms2.html", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData as any).toString(),
@@ -23,8 +23,6 @@ const FormSecond = () => {
       <h2>Form Second</h2>
       <form
         name="contact11"
-        method="POST"
-        data-netlify="true"
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact11" />
