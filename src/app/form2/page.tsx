@@ -1,111 +1,63 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { useFormik } from "formik";
-import Reaptcha from 'reaptcha';
 
-interface FormValues {
-  name1: string;
-  email1: string;
-  message1: string;
-}
+import React from "react";
 
-const Form = () => {
-  const recaptcha = useRef<Reaptcha>(null);
-  const [recaptchaValue, setRecaptchaValue] = useState<string>("");
-  const sitekey: string = process.env.RECAPTCHA_SITE_KEY || " ";
-  const formik = useFormik({
-    initialValues: {
-      name1: "",
-      email1: "",
-      message1: "",
-    },
-    onSubmit: async (values, { resetForm }) => {
-      try {
-        const response = await fetch("/__forms2.html", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({ "form-name": "feedback", ...values }),
-        });
-        if (response.ok) {
-          alert("Form successfully submitted");
-          resetForm();
-        } else {
-          throw new Error("Form submission failed!");
-        }
-      } catch (error: any) {
-        alert(error.message);
-      }
-      resetForm();
-    },
-  });
-  const encode = (data: any) => {
-    return Object.keys(data)
-      .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-      )
-      .join("&");
-  };
-  const onCaptchaChange = (token: string | null) => {
-    if (token) {
-      setRecaptchaValue(token);
-    }
-  };
+const handleSubmit = (event: any) => {
+  event.preventDefault();
+
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData as any).toString(),
+  })
+    .then(() => console.log("Form successfully submitted"))
+    .catch((error) => alert(error));
+};
+
+const FormSecond = () => {
   return (
     <div>
-      <h2>Contact Form 2</h2>
+      <h2>Form Second</h2>
       <form
-        onSubmit={formik.handleSubmit}
-        name="feedback"
+        name="contact11"
+        method="POST"
+        data-netlify="true"
+        onSubmit={handleSubmit}
       >
-        <input type="hidden" name="form-name" value="feedback" />
-        {/* <label hidden htmlFor="bot-field">
-          Don&apos;t fill this out if you&apos;re human:
-          <input name="bot-field" />
-        </label> */}
+        <input type="hidden" name="form-name" value="contact11" />
         <p>
           <label>
-            Your Name:{" "}
-            <input
-              type="text"
-              name="name1"
-              value={formik.values.name1}
-              onChange={formik.handleChange}
-            />
+            Your Name: <input type="text" name="name" />
           </label>
         </p>
         <p>
           <label>
-            Your Email:{" "}
-            <input
-              type="email"
-              name="email1"
-              value={formik.values.email1}
-              onChange={formik.handleChange}
-            />
+            Your Email: <input type="email" name="email" />
           </label>
-          
         </p>
         <p>
           <label>
-            Message:{" "}
-            <textarea
-              name="message1"
-              value={formik.values.message1}
-              onChange={formik.handleChange}
-            ></textarea>
+            Your Role:{" "}
+            <select name="role[]" multiple>
+              <option value="leader">Leader</option>
+              <option value="follower">Follower</option>
+            </select>
           </label>
         </p>
-        <div className="relative">
-          
-          <Reaptcha  size="normal"
-            sitekey={sitekey}
-            onVerify={onCaptchaChange}
-            ref={recaptcha} />
-        </div>
-        <button type="submit">Send</button>
+        <p>
+          <label>
+            Message: <textarea name="message"></textarea>
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default FormSecond;
