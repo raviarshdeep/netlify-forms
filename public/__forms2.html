@@ -8,11 +8,11 @@
         <input name="email1" type="text" />
         <input name="message1" type="text" />
     </form>
-    <form name="contact11" method="POST" data-netlify="true">
+    <form name="contact11" method="POST"  netlify-honeypot="bot-field"  data-netlify-recaptcha="true" data-netlify="true">
         <input type="text" name="name" />
         <input type="email" name="email" />
         <select name="role[]" multiple>
-
+        <textarea name="message"></textarea>
     </form>
 
 </body>
